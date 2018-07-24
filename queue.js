@@ -43,7 +43,7 @@ export default class Queue extends EventEmitter {
 	}
 
 	send(message, cb) {
-		let formattedMessage = message.toString();
+		let formattedMessage = JSON.stringify(message);
 
 		return queueProxy.send({
 			path: this.path,
