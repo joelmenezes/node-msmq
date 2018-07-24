@@ -1,4 +1,4 @@
-import edge from 'edge';
+import edge from 'edge-js';
 import path from 'path';
 
 const baseOptions = {

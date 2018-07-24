@@ -1,6 +1,6 @@
 {
-  "name": "node-msmq",
-  "version": "0.1.3",
+  "name": "updated-node-msmq",
+  "version": "0.1.4",
   "description": "A MSMQ implementation for node.js",
   "main": "dist/index.js",
   "scripts": {
@@ -15,9 +15,9 @@
     "messaging"
   ],
   "author": {
-    "email": "me@marcobarcelos.com",
-    "name": "Marco Barcelos",
-    "url": "marcobarcelos.com"
+    "email": "joelfelixmenezes@gmail.com",
+    "name": "Joel Menezes",
+    "url": "https://joelmenezes.github.io/"
   },
   "repository": "marcobarcelos/node-msmq",
   "license": "MIT",
@@ -39,6 +39,6 @@
   },
   "dependencies": {
     "babel-runtime": "^6.9.0",
-    "edge": "^5.0.0"
+    "edge-js": "^10.0.0"
   }
 }

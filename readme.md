@@ -1,3 +1,6 @@
+#Repo
+This is a forked repo from [here](https://github.com/marcobarcelos/node-msmq)
+
 # node-msmq
 
 > A MSMQ implementation for node.js
@@ -5,7 +8,7 @@
 ## Install
 
 ```
-$ npm install --save node-msmq
+$ npm install --save updated-node-msmq
 ```
 
 ## Usage
@@ -15,7 +18,7 @@ $ npm install --save node-msmq
 Sends a message to a MSMQ queue.
 
 ```js
-const msmq = require('node-msmq');
+const msmq = require('updated-node-msmq');
 
 var queue = msmq.openOrCreateQueue('.\\Private$\\MyAwesomeQueue');
 
@@ -28,7 +31,7 @@ queue.send('Hello from Node.JS!');
 Start receiving messages from a queue.
 
 ```js
-const msmq = require('node-msmq');
+const msmq = require('updated-node-msmq');
 
 var queue = msmq.openOrCreateQueue('.\\Private$\\MyAwesomeQueue');
 
@@ -46,7 +49,7 @@ queue.startReceiving();
 Gets all messages without removing them from queue.
 
 ```js
-const msmq = require('node-msmq');
+const msmq = require('updated-node-msmq');
 
 var queue = msmq.openOrCreateQueue('.\\Private$\\MyAwesomeQueue');
 var messages = queue.getAllMessages();
@@ -57,7 +60,7 @@ var messages = queue.getAllMessages();
 Clears all messages from the queue.
 
 ```js
-const msmq = require('node-msmq');
+const msmq = require('updated-node-msmq');
 
 var queue = msmq.openOrCreateQueue('.\\Private$\\MyAwesomeQueue');
 queue.purge();
@@ -65,4 +68,4 @@ queue.purge();
 
 ## License
 
-MIT © [Marco Barcelos](http://marcobarcelos.com)
+MIT © [Joel Menezes](https://joelmenezes.github.io/)
