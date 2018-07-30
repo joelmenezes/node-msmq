@@ -1,0 +1,44 @@
+{
+  "name": "updated-node-msmq",
+  "version": "0.1.6",
+  "description": "A MSMQ implementation for node.js",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "npm run build:js && npm run build:lib",
+    "build:js": "babel *.js --out-dir=dist",
+    "build:lib": "csc /target:library /out:dist\\MSMQLib.dll MSMQLib\\MSMQMessage.cs MSMQLib\\MSMQInterface.cs"
+  },
+  "keywords": [
+    "msmq",
+    "message",
+    "queue",
+    "messaging"
+  ],
+  "author": {
+    "email": "joelfelixmenezes@gmail.com",
+    "name": "Joel Menezes",
+    "url": "https://joelmenezes.github.io/"
+  },
+  "repository": "joelmenezes/updated-node-msmq",
+  "license": "MIT",
+  "babel": {
+    "plugins": [
+      "add-module-exports",
+      "transform-runtime"
+    ],
+    "presets": [
+      "es2015"
+    ],
+    "sourceMaps": "inline"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.8.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-preset-es2015": "^6.6.0"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.9.0",
+    "edge-js": "^10.0.0"
+  }
+}
