@@ -1,9 +1,15 @@
-#Repo
-This is a forked repo from [here](https://github.com/marcobarcelos/node-msmq)
+# updated-node-msmq
 
-# node-msmq
+This is a fork of [node-msmq](https://github.com/marcobarcelos/node-msmq) providing improvements and additional functionality which are not yet added into the main node-msmq repo.
+
+NPM package is published as updated-node-msmq. https://www.npmjs.com/package/updated-node-msmq.
 
 > A MSMQ implementation for node.js
+
+## Differences from `node-msmq`
+
+* Support for Node.Js 6.x, 7.x, 8.x, 9.x, 10.x
+* Support to push objects to the queue instead of just strings. 
 
 ## Install
 
