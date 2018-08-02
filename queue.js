@@ -27,13 +27,9 @@ export default class Queue extends EventEmitter {
 		return new Queue(path);
 	}
 
-  static sendToRemoteQueue(path, message, cb) {
-    let formattedMessage = JSON.stringify(message);
-
-		return queueProxy.sendRemote({
-			path: path,
-			message: formattedMessage
-		}, cb);
+  static connectToRemoteQueue(path) {
+    queueProxy.connectRemote(path, true);
+    return new Queue(path);
   }
 
 	startReceiving() {
