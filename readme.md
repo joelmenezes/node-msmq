@@ -10,6 +10,7 @@ NPM package is published as updated-node-msmq. https://www.npmjs.com/package/upd
 
 * Support for Node.Js 6.x, 7.x, 8.x, 9.x, 10.x
 * Support to push objects to the queue instead of just strings. 
+* Support to send messages to a queue on a **remote** machine.
 
 ## Install
 
@@ -31,6 +32,35 @@ var queue = msmq.openOrCreateQueue('.\\Private$\\MyAwesomeQueue');
 // Send message to queue
 queue.send('Hello from Node.JS!');
 ```
+
+### Send a message to a remote queue
+
+Sends a message to a remote MSMQ queue.
+
+```js
+const msmq = require('updated-node-msmq');
+
+// Send message to a remote queue using hostname
+msmq.sendToRemoteQueue('FormatName:DIRECT=OS:mobile-000000\\private$\\privatetest', 'Hello from Node.JS!');
+
+msmq.sendToRemoteQueue('FormatName:DIRECT=TCP:192.168.1.5\\private$\\privatetest', 'Hello again from Node.JS!');
+```
+
+#### Note: 
+* Creating a queue on a remote machine is not currently supported by MSMQ.
+* To send messages to a remote queue, MSMQ should be enabled in the sender's machine too. Also, in the _Security_ tab of the queue on the remote machine should have the appropriate permissions set for _Everyone_ and _ANONYMOUS LOGON_.
+* The queue should already be created on the remote machine.
+* The format to send a message to a remote queue is as follows:
+`
+msmsq.sendToRemoteQueue(path, message);
+`
+* `path` has to be in the following format:
+
+    `FormatName:DIRECT=TCP:`_`<ip_address>`_`\\private$\\`_`<queue_name>`_`
+
+    or
+
+    `FormatName:DIRECT=OS:`_`<machine_name>`_`\\private$\\`_`<queue_name>`_`
 
 ### Receive messages
 
