@@ -17,5 +17,5 @@ export var queueProxy = {
 	receive: getMethod('ReceiveMessages'),
 	list: getMethod('GetAllMessages'),
   clear: getMethod('PurgeQueue'),
-  sendRemote: getMethod('SendToRemoteQueue')
+  connectRemote: getMethod('ConnectRemote')
 };
