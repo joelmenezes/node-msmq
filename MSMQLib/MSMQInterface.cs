@@ -27,6 +27,25 @@ namespace MSMQLib
         }
 
         /// <summary>
+        /// Sends a message to a remote MSMQ queue.
+        /// </summary>
+        /// <param name="input">The queue's path and the message.</param>
+        /// <returns>True if queue can be connected to.</returns>
+        public async Task<object> SendToRemoteQueue(dynamic input)
+        {
+            string path = (string)input.path;
+            string message = (string)input.message;
+
+            byte[] bytes = Encoding.UTF8.GetBytes(message);
+            MessageQueue queue = new MessageQueue(path);
+            Message msg = new Message();
+            msg.BodyStream = new MemoryStream(bytes); 
+
+            await Task.Run(() => queue.Send(msg));
+            return true;
+        }
+
+        /// <summary>
         /// Checks whether a queue exists or not.
         /// </summary>
         /// <param name="path">The queue's path.</param>
