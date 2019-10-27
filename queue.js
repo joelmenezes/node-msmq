@@ -1,5 +1,5 @@
-import {EventEmitter} from 'events';
-import {queueProxy} from './proxy';
+import { EventEmitter } from 'events';
+import { queueProxy } from './proxy';
 
 export default class Queue extends EventEmitter {
 
@@ -27,10 +27,10 @@ export default class Queue extends EventEmitter {
 		return new Queue(path);
 	}
 
-  static connectToRemoteQueue(path) {
-    queueProxy.connectRemote(path, true);
-    return new Queue(path);
-  }
+	static connectToRemoteQueue(path) {
+		queueProxy.connectRemote(path, true);
+		return new Queue(path);
+	}
 
 	startReceiving() {
 		if (this.receiving) {
