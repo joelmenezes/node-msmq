@@ -100,6 +100,47 @@ namespace MSMQLib
         }
 
         /// <summary>
+        /// Removes a message with the given id from the queue.
+        /// </summary>
+        /// <param name="input">The queue's path and message id.</param>
+        public async Task<object> ReceiveMessageById(dynamic input)
+        {
+            var path = (string)input.path;
+            var id = (string)input.id;
+
+            MessageQueue queue = new MessageQueue(path);
+            queue.Formatter = new BinaryMessageFormatter();
+            queue.MessageReadPropertyFilter.SetAll();
+
+            try
+            {
+                var msg = (MSMQMessage)queue.ReceiveById(id);
+                return true;
+            }
+            catch (InvalidOperationException) // Thrown if message with given id is not in queue.
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Peeks a message from a queue without removing it.
+        /// </summary>
+        /// <param name="path">The queue's path.</param>
+        public async Task<object> Peek(string path)
+        {
+            MessageQueue queue = new MessageQueue(path);
+            queue.Formatter = new BinaryMessageFormatter();
+            queue.MessageReadPropertyFilter.SetAll();
+
+            var msg = await Task.Factory.FromAsync<Message>(
+                queue.BeginPeek(),
+                queue.EndPeek);
+
+            return (MSMQMessage)msg;
+        }
+
+        /// <summary>
         /// Gets all messages from a queue without removing them.
         /// </summary>
         /// <param name="path">The queue's path.</param>
